@@ -1,0 +1,31 @@
+server:
+  port: 8081
+spring:
+  cloud:
+    stream:
+      bindings:
+        fileProcessor:
+          destination: fileProcessor.exchange
+          binder: rabbit
+          group: file-processor
+      binders:
+        rabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: localhost
+                port: 5672
+                username: guest
+                password: guest
+                virtualhost: /
+inDirPath: '/data/in'
+outDirPath: '/data/out'
+firstSplitSeparator: \u00E7
+secondSplitSeparator: ','
+thirdSplitSeparator: '-'
+itemReplace1: '['
+itemReplace2: ']'
+sellerMarkingCode: '001'
+clientMarkingCode: '002'
+saleMarkingCode: '003'
